@@ -4,8 +4,20 @@
 {% endblock %}
 
 {% block body %}
-	<h1>{{ website }}
-		index</h1>
+	<section class="homeBody">
+		<h1 class="mx-auto col-8 text-center h1Home">Welcome to The Office GIF-tastic Collection</h1>
 
-	<img src="{{asset('build/images/This-Guy-Jim-Halpert-The-Office.gif')}}" alt="">
+		<h2 class="mx-auto col-10 text-center h2Home">Experience the wackiness of Dunder Mifflin anytime, anywhere with our GIFs</h2>
+
+		<div class="text-center">
+			<a class="btn btn-primary originalBtn m-5" href="">
+				<p class="my-3">See Random Gif</p>
+			</a>
+			<a class="btn btn-primary originalBtn m-5" href="">
+				<p class="my-3">Browse Collection</p>
+			</a>
+			<a class="btn btn-primary originalBtn m-5" href="">
+				<p class="my-3">Log In</p>
+			</a>
+		</div>{# <img src="{{asset('build/images/This-Guy-Jim-Halpert-The-Office.gif')}}" alt=""> #}</section>
 {% endblock %}
