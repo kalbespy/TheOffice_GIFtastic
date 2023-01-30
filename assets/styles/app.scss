@@ -6,12 +6,26 @@ $primary: #E79A30;
 // the ~ allows you to reference things in node_modules
 @import "~bootstrap/scss/bootstrap";
 
-body {
-    background-color: whitesmoke;
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
+
+* {
+    font-family: 'Roboto', sans-serif;
 }
 
 .bodyContent {
     height: 100%;
+    margin-bottom: 100px;
+}
+
+h1 {
+    font-size: 64px;
+    font-weight: 700;
+}
+
+h2 {
+    font-style: italic;
+    font-size: 48px;
+    font-weight: 400;
 }
 
 /** NAVBAR **/
@@ -35,10 +49,10 @@ body {
 }
 
 /** END OF NAVBAR **/
+
+/** FOOTER **/
 .footer {
     background-color: $primary;
-    position: absolute;
-    bottom: 0;
     width: 100vw;
     min-height: 10vh;
 }
@@ -46,3 +60,38 @@ body {
 .footerLogo {
     width: 300px;
 }
+
+/** END OF FOOTER **/
+
+/** HOMEPAGE **/
+.homeBody {
+    background: url("/assets/images/The-Office-US-US-Office-background-340.jpg") no-repeat;
+    height: fit-content;
+    background-size: cover;
+    padding-bottom: 250px;
+    padding-top: 200px;
+}
+
+.originalBtn {
+    border-radius: 50px;
+    font-size: 34px;
+    height: 100px;
+    width: 500px;
+    font-weight: 500;
+}
+
+.h1Home {
+    background-color: rgba(0, 0, 0, 0.623);
+    color: white;
+    padding: 50px;
+    border: 1px solid black;
+    border-radius: 100px;
+    margin-bottom: 50px;
+}
+
+.h2Home {
+    margin-top: 150px;
+    margin-bottom: 90px;
+}
+
+/** END OF HOMEPAGE **/
