@@ -17,18 +17,13 @@
 			{{ encore_entry_script_tags('app') }}
 		{% endblock %}
 	</head>
+
 	<body>
 
 		{% include "components/_navbar.html.twig" %}
-		<ul>
-			<li>
-				<a href="{{ path("home") }}">Home</a>
-			</li>
-			<li>
-				<a href="{{ path("app_gif_index") }}">
-					Index Gif</a>
-			</li>
-		</ul>
 		{% block body %}{% endblock %}
+
+		{% include "components/_footer.html.twig" %}
+
 	</body>
 </html>
