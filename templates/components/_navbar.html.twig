@@ -1,0 +1,18 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+	<div class="container-fluid">
+		<a class="navbar-brand" href='{{ path("home") }}'><img class="navLogo" src='{{asset('build/images/LogoTheOfficeGif.png')}}' alt=""></a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse text-end justify-content-lg-end" id="navbarNavAltMarkup">
+			<div
+				class="navbar-nav">
+				{# <a class="nav-link" href="{{ path("app_gif_random") }}">Random GIF</a> #}
+				<a class="nav-link m-2 fs-3 fw-bold" href="{{ path("app_gif_index") }}">Random GIF</a>
+				<a class="nav-link m-2 fs-3 fw-bold" href="{{ path("app_gif_index") }}">Browse GIF</a>
+				<a class="nav-link m-2 fs-3 fw-bold" href="{{ path("app_gif_index") }}">Log In</a>
+				{# <a class="nav-link" href="{{ path("app_login") }}">Log In</a> #}
+			</div>
+		</div>
+	</div>
+</nav>
