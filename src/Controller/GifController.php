@@ -21,6 +21,35 @@ class GifController extends AbstractController
         ]);
     }
 
+    #[Route('/random', name: 'app_gif_random', methods: ['GET'])]
+    public function random(GifRepository $gifRepository): Response
+    {
+
+        $allGifs = $gifRepository->findAll();
+        $gifCount = count($allGifs);
+        $randomNumber = rand(0, $gifCount - 1);
+        $randomGif = $allGifs[$randomNumber];
+
+        return $this->render('gif/randomGif.html.twig', [
+            'randomGif' => $randomGif,
+        ]);
+    }
+
+    #[Route('/{id}/vote', name: 'app_gif_vote', methods: ['GET'])]
+    public function vote(Gif $gif, GifRepository $gifRepository): Response
+    {
+
+        $nbOfVotes = $gif->getNbOfVotes();
+        $nbOfVotes++;
+        $gif->setNbOfVotes($nbOfVotes);
+
+        $gifRepository->save($gif, true);
+
+        return $this->render('gif/randomGif.html.twig', [
+            'randomGif' => $gif,
+        ]);
+    }
+
     #[Route('/new', name: 'app_gif_new', methods: ['GET', 'POST'])]
     public function new(Request $request, GifRepository $gifRepository): Response
     {
@@ -69,7 +98,7 @@ class GifController extends AbstractController
     #[Route('/{id}', name: 'app_gif_delete', methods: ['POST'])]
     public function delete(Request $request, Gif $gif, GifRepository $gifRepository): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$gif->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $gif->getId(), $request->request->get('_token'))) {
             $gifRepository->remove($gif, true);
         }
 
