@@ -8,8 +8,14 @@
 			<div class="navbar-nav">
 				<a class="nav-link m-2 fs-3 fw-bold" href="{{ path("app_gif_random") }}">Random GIF</a>
 				<a class="nav-link m-2 fs-3 fw-bold" href="{{ path("app_gif_browse") }}">Browse GIFs</a>
-				{# <a class="nav-link m-2 fs-3 fw-bold" href="{{ path("app_gif_index") }}">Log In</a> #}
-				{# <a class="nav-link" href="{{ path("app_login") }}">Log In</a> #}
+				{% if app.user %}
+					<a class="nav-link m-2 fs-3 fw-bold" href="#">My collection</a>
+					<a class="nav-link m-2 fs-3 fw-bold" href="{{ path('app_logout')}}">
+						Logout</a>
+				{% else %}
+					<a class="nav-link m-2 fs-3 fw-bold" href="{{ path('app_login') }}">
+						Login</a>
+				{% endif %}
 			</div>
 		</div>
 	</div>
