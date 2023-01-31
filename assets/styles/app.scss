@@ -1,11 +1,116 @@
 // assets/styles/global.scss
 
 // customize some Bootstrap variables
-$primary: darken(#428bca, 20%);
+$primary: #E79A30;
 
 // the ~ allows you to reference things in node_modules
 @import "~bootstrap/scss/bootstrap";
 
-body {
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
+
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
+.bodyContent {
+    margin-bottom: 100px;
+}
+
+h1 {
+    font-size: 64px;
+    font-weight: 700;
+}
+
+h2 {
+    font-size: 48px;
+    font-weight: 400;
+}
+
+/** NAVBAR **/
+.navbar {
     background-color: $primary;
 }
+
+.navLogo {
+    width: 500px;
+}
+
+.navbar-toggler {
+    width: 100px;
+    height: 100px;
+    padding: 0;
+}
+
+.navbar-toggler-icon {
+    width: 80px;
+    height: 100px;
+}
+
+/** END OF NAVBAR **/
+
+/** FOOTER **/
+.footer {
+    background-color: $primary;
+    width: 100%;
+    min-height: 10vh;
+}
+
+.footerLogo {
+    width: 300px;
+}
+
+/** END OF FOOTER **/
+
+/** HOMEPAGE **/
+.homeBody {
+    background: url("/assets/images/The-Office-US-US-Office-background-340.jpg") no-repeat;
+    height: fit-content;
+    background-size: cover;
+    padding-bottom: 100px;
+    padding-top: 100px;
+}
+
+.originalBtn {
+    border-radius: 50px;
+    font-size: 34px;
+    height: 100px;
+    width: 500px;
+    font-weight: 500;
+}
+
+.h1Home {
+    background-color: rgba(0, 0, 0, 0.623);
+    color: white;
+    padding: 50px;
+    border: 1px solid black;
+    border-radius: 100px;
+    margin-bottom: 50px;
+}
+
+.h2Home {
+    margin-top: 150px;
+    margin-bottom: 90px;
+    font-style: italic;
+}
+
+/** END OF HOMEPAGE **/
+
+/** RANDOM GIF PAGE **/
+
+.randomBtn {
+    border-radius: 50px;
+    font-size: 34px;
+    height: fit-content;
+    width: 300px;
+    font-weight: 500;
+}
+
+/** END OF RANDOM GIF PAGE **/
+
+/** ADMIN - GIF PAGE **/
+
+.gifPreview {
+    width: 250px;
+}
+
+/** END OF ADMIN - GIF PAGE **/
