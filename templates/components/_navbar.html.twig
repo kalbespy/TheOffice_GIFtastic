@@ -16,6 +16,11 @@
 					<a class="nav-link m-2 fs-3 fw-bold" href="{{ path('app_login') }}">
 						Login</a>
 				{% endif %}
+				{% if is_granted('ROLE_ADMIN') %}
+					<a class="nav-link m-2 fs-3 fw-bold" href="{{ path('app_gif_index') }}">
+						ADMIN</a>
+				{% endif  %}
+
 			</div>
 		</div>
 	</div>

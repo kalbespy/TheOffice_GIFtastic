@@ -1,39 +1,43 @@
-{% extends 'base.html.twig' %}
+{% extends 'baseAdmin.html.twig' %}
 
-{% block title %}Gif index{% endblock %}
+{% block title %}Gif index
+{% endblock %}
 
 {% block body %}
-    <h1>Gif index</h1>
+	<h1>Gif index</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>Picture</th>
-                <th>NbOfVotes</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for gif in gifs %}
-            <tr>
-                <td>{{ gif.id }}</td>
-                <td>{{ gif.title }}</td>
-                <td>{{ gif.picture }}</td>
-                <td>{{ gif.nbOfVotes }}</td>
-                <td>
-                    <a href="{{ path('app_gif_show', {'id': gif.id}) }}">show</a>
-                    <a href="{{ path('app_gif_edit', {'id': gif.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="5">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+	<table class="table m-5">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Title</th>
+				<th>Picture</th>
+				<th>Preview</th>
+				<th>NbOfVotes</th>
+				<th>actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for gif in gifs %}
+				<tr>
+					<td>{{ gif.id }}</td>
+					<td>{{ gif.title }}</td>
+					<td>{{ gif.picture }}</td>
+					<td><img class="gifPreview" src="{{asset('build/images/' ~ gif.picture)}}" alt="">
+					</td>
+					<td>{{ gif.nbOfVotes }}</td>
+					<td>
+						<a href="{{ path('app_gif_show', {'id': gif.id}) }}">show</a>
+						<a href="{{ path('app_gif_edit', {'id': gif.id}) }}">edit</a>
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="5">no records found</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
 
-    <a href="{{ path('app_gif_new') }}">Create new</a>
+	<a href="{{ path('app_gif_new') }}">Create new</a>
 {% endblock %}
