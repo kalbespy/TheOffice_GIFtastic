@@ -11,46 +11,177 @@ class GifFixtures extends Fixture
 {
     public const GIFS = [
         [
+            'title' => 'Dancing Andy',
+            'picture' => 'AndyDance.gif',
+        ],
+        [
+            'title' => 'Bankrupcy !',
+            'picture' => 'Banckrupcy.gif',
+        ],
+        [
+            'title' => 'Bear, Beets, Battlestar Galactica !',
+            'picture' => 'BearBeets.gif',
+        ],
+        [
             'title' => 'Tackle hug',
             'picture' => 'BigHug.gif',
-            'nbOfVotes' => '654'
+        ],
+        [
+            'title' => 'It is your birthday',
+            'picture' => 'Birthday.gif',
+        ],
+        [
+            'title' => 'Save the cat',
+            'picture' => 'CatFall.gif',
+        ],
+        [
+            'title' => 'Dead Inside',
+            'picture' => 'DeadInside.gif',
+        ],
+        [
+            'title' => 'Stanley did not stutter...',
+            'picture' => 'DidIStutter.gif',
+        ],
+        [
+            'title' => 'Dwight Master of disguise',
+            'picture' => 'DwightDisguise.gif',
+        ],
+        [
+            'title' => 'Black belt dwight',
+            'picture' => 'DwightKarate.gif',
+        ],
+        [
+            'title' => 'Masked Dwight',
+            'picture' => 'DwightMask.gif',
+        ],
+        [
+            'title' => 'Screaming Dwight ',
+            'picture' => 'DwightScream.gif',
+        ],
+        [
+            'title' => 'KGB will wait for no-one !',
+            'picture' => 'DwightTrue.gif',
+        ],
+        [
+            'title' => 'Victorious Dwight',
+            'picture' => 'DwightVictory.gif',
         ],
         [
             'title' => 'Finger Zipper',
-            'picture' => 'Blague-doigt.gif',
-        ],
-        [
-            'title' => 'Screaming Dwight',
-            'picture' => 'Dwight_scream.gif',
+            'picture' => 'FingerZipper.gif',
         ],
         [
             'title' => 'Fire in the hole !',
             'picture' => 'Fire in the hole.gif',
         ],
         [
+            'title' => 'God, please No !',
+            'picture' => 'GodNo.gif',
+        ],
+        [
+            'title' => 'God, please No !',
+            'picture' => 'GodNo.gif',
+        ],
+        [
+            'title' => 'Hockey Toby',
+            'picture' => 'HockeyToby.gif',
+        ],
+        [
             'title' => 'I\'ll kill you',
             'picture' => 'I\'ll kill you.gif',
         ],
         [
-            'title' => 'Kevin nods and smile',
-            'picture' => 'Kevin-Nods-and-Smiles-The-Office.gif',
+            'title' => 'Classic Jim Prank',
+            'picture' => 'Jello.gif',
         ],
         [
-            'title' => 'Bankrupcy declaration!',
-            'picture' => 'Michael-Scott-I-Declare-Bankruptcy.gif',
+            'title' => 'Oh..',
+            'picture' => 'JimFace.gif',
+        ],
+        [
+            'title' => 'Incognito Jim',
+            'picture' => 'JimHidden.gif',
+        ],
+        [
+            'title' => 'Kevin nods and smile',
+            'picture' => 'Kevin-Nods-and-Smiles.gif',
+        ],
+        [
+            'title' => 'Kevin Best Chili',
+            'picture' => 'KevinChili.gif',
+        ],
+        [
+            'title' => 'Kevin laughing',
+            'picture' => 'KevinLaugh.gif',
+        ],
+        [
+            'title' => 'Mexican standoff',
+            'picture' => 'MexicanStandoff.gif',
+        ],
+        [
+            'title' => 'Fire panic',
+            'picture' => 'MichaelHappening.gif',
+        ],
+        [
+            'title' => 'Festive Michael',
+            'picture' => 'MichealFest.gif',
+        ],
+        [
+            'title' => 'Parkour',
+            'picture' => 'Parkour.gif',
+        ],
+        [
+            'title' => 'Prison Mike',
+            'picture' => 'PrisonMike.gif'
+        ],
+        [
+            'title' => 'Prison Mike Story',
+            'picture' => 'PrisonMikeDementors.gif'
+        ],
+        [
+            'title' => 'Michael hates Toby',
+            'picture' => 'SmashFace.gif'
+        ],
+        [
+            'title' => 'Stanley Eyeroll',
+            'picture' => 'StanleyEyeRoll.gif'
+        ],
+        [
+            'title' => 'Thank you',
+            'picture' => 'ThankYou.gif'
+        ],
+        [
+            'title' => 'That\'s what he said',
+            'picture' => 'ThatsWhatHeSaid.gif'
         ],
         [
             'title' => 'That\'s what she said',
-            'picture' => 'That\'s what she said.gif',
+            'picture' => 'ThatsWhatSheSaid.gif',
         ],
         [
             'title' => 'Unbelievable',
-            'picture' => 'The-Office-Interview-Unbelievable.gif',
+            'picture' => 'Unbelievable.gif',
         ],
         [
             'title' => 'This guy',
-            'picture' => 'This-Guy-Jim-Halpert-The-Office.gif',
-        ]
+            'picture' => 'ThisGuy.gif',
+        ],
+        [
+            'title' => 'This is the worst',
+            'picture' => 'ThisIsTheWorst.gif',
+        ],
+        [
+            'title' => 'Michael still hates Toby',
+            'picture' => 'TobyNobodyCares.gif',
+        ],
+        [
+            'title' => 'Michael try to hide his feeling',
+            'picture' => 'WorstEnd.gif',
+        ],
+        [
+            'title' => 'Yes Dwight',
+            'picture' => 'YesDwight.gif',
+        ],
     ];
 
     public function load(ObjectManager $manager): void
