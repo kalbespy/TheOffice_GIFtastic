@@ -8,6 +8,8 @@
 		<div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
 	{% endif %}
 
+	<h1>Connexion</h1>
+
 	<form class="d-flex row m-5 col-3" action="{{ path('app_login') }}" method="post">
 		<div class="d-flex row m-3">
 			<label for=" username">Email:</label>
