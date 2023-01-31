@@ -187,7 +187,7 @@ class GifFixtures extends Fixture
             $gif = new Gif();
             $gif->setTitle($values['title']);
             $gif->setPicture($values['picture']);
-            $gif->setNbOfVotes(($faker->numberBetween(0, 5000)));
+            $gif->setNbOfVotes($faker->numberBetween(0, 5000));
             $manager->persist($gif);
             $this->addReference('gif_' . $key, $gif);
         }

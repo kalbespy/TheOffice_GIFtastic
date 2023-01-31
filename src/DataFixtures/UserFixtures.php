@@ -5,6 +5,7 @@ namespace App\DataFixtures;
 use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
+use Faker\Factory;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class UserFixtures extends Fixture
@@ -57,6 +58,10 @@ class UserFixtures extends Fixture
 
     public function load(ObjectManager $manager): void
     {
+        $faker = Factory::create();
+
+        $nbGif = count(GifFixtures::GIFS);
+
         foreach (self::USERS as $key => $values) {
             $user = new User();
             $user->setEmail($values['email']);
@@ -64,6 +69,12 @@ class UserFixtures extends Fixture
             $user->setPseudo($values['pseudo']);
             $hash = $this->passwordHasher->hashPassword($user, $values['password']);
             $user->setPassword($hash);
+            for ($i = 0; $i < $faker->numberBetween(4, 10); $i++) {
+                $user->addToVotes($this->getReference('gif_' . $faker->numberBetween(0, $nbGif - 1)));
+            }
+            for ($i = 0; $i < $faker->numberBetween(3, 25); $i++) {
+                $user->addToCollection($this->getReference('gif_' . $faker->numberBetween(0, $nbGif - 1)));
+            }
             $manager->persist($user);
             $this->addReference('user_' . $key, $user);
         }
