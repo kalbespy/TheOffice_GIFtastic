@@ -27,8 +27,7 @@ class GifController extends AbstractController
 
         $allGifs = $gifRepository->findAll();
         $gifCount = count($allGifs);
-        $randomNumber = rand(0, $gifCount - 1);
-        $randomGif = $allGifs[$randomNumber];
+        $randomGif = $allGifs[rand(0, $gifCount - 1)];
 
         return $this->render('gif/randomGif.html.twig', [
             'randomGif' => $randomGif,
