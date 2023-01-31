@@ -21,6 +21,14 @@ class GifController extends AbstractController
         ]);
     }
 
+    #[Route('/browse', name: 'app_gif_browse', methods: ['GET'])]
+    public function browse(GifRepository $gifRepository): Response
+    {
+        return $this->render('gif/browse.html.twig', [
+            'gifs' => $gifRepository->findAll(),
+        ]);
+    }
+
     #[Route('/random', name: 'app_gif_random', methods: ['GET'])]
     public function random(GifRepository $gifRepository): Response
     {
