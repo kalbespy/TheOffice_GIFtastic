@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gif index
+{% endblock %}
+
+{% block body %}
+	<section class="min-vh-100 text-center">
+		<h1 class="text-center m-5">Random GIF</h1>
+
+		<div class="card col-4 text-center m-auto">
+			<h3 class="card-header">
+				{{randomGif.title}}
+			</h3>
+			<div class="card-body">
+				<img src="{{asset('build/images/' ~ randomGif.picture)}}" alt="">
+				<h5 class="card-title m-3">
+					Votes:
+					{{ randomGif.nbOfVotes }}</h5>
+				<a href="#" class="btn btn-primary randomBtn m-3">Add to your collection</a>
+				<a href="{{ path('app_gif_vote', {'id': randomGif.id}) }}" class="btn btn-primary randomBtn m-3">Add a vote</a>
+			</div>
+		</div>
+
+		<a href="{{ path('app_gif_random') }}" class="btn btn-primary randomBtn m-3">Load another Gif</a>
+
+	</section>
+{% endblock %}
