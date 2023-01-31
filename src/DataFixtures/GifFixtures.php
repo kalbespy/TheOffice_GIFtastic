@@ -79,10 +79,6 @@ class GifFixtures extends Fixture
             'picture' => 'GodNo.gif',
         ],
         [
-            'title' => 'God, please No !',
-            'picture' => 'GodNo.gif',
-        ],
-        [
             'title' => 'Hockey Toby',
             'picture' => 'HockeyToby.gif',
         ],

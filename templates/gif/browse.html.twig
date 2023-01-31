@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gif index
+{% endblock %}
+
+{% block body %}
+	<h1>Browse GIFs</h1>
+
+	<section class="d-flex flex-row flex-wrap justify-content-around">
+		{% for gif in gifs|sort ((b, a) => a.nbOfVotes <=> b.nbOfVotes) %}
+			<div class="card col-3 text-center m-3">
+				<h3 class="card-header">
+					{{gif.title}}
+				</h3>
+				<div class="card-body">
+					<img src="{{asset('build/images/' ~ gif.picture)}}" alt="">
+					<h5 class="card-title m-3">
+						Votes:
+						{{ gif.nbOfVotes }}</h5>
+					<a href="#" class="btn btn-primary randomBtn m-3">Add to your collection</a>
+					<a href="{{ path('app_gif_vote', {'id': gif.id}) }}" class="btn btn-primary randomBtn m-3">Add a vote</a>
+				</div>
+			</div>
+		{% else %}
+			<p colspan="5">No records found</p>
+		{% endfor %}
+	</section>
+{% endblock %}
