@@ -90,9 +90,9 @@ class Gif
         if (!$this->voters->contains($voter)) {
             $this->voters->add($voter);
             $voter->addToVotes($this);
-        }
 
-        return $this;
+            return $this;
+        }
     }
 
     public function removeVoter(User $voter): self
