@@ -91,7 +91,7 @@ class GifFixtures extends Fixture
             'picture' => 'Jello.gif',
         ],
         [
-            'title' => 'Oh..',
+            'title' => 'Oh...',
             'picture' => 'JimFace.gif',
         ],
         [
@@ -103,7 +103,7 @@ class GifFixtures extends Fixture
             'picture' => 'Kevin-Nods-and-Smiles.gif',
         ],
         [
-            'title' => 'Kevin Best Chili',
+            'title' => 'Kevin\'s Famous Chili',
             'picture' => 'KevinChili.gif',
         ],
         [
@@ -131,7 +131,7 @@ class GifFixtures extends Fixture
             'picture' => 'PrisonMike.gif'
         ],
         [
-            'title' => 'Prison Mike Story',
+            'title' => 'Prison Mike Dementors',
             'picture' => 'PrisonMikeDementors.gif'
         ],
         [
@@ -171,7 +171,7 @@ class GifFixtures extends Fixture
             'picture' => 'TobyNobodyCares.gif',
         ],
         [
-            'title' => 'Michael try to hide his feeling',
+            'title' => 'Michael hides his feeling',
             'picture' => 'WorstEnd.gif',
         ],
         [
