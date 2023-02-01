@@ -13,11 +13,23 @@
 			</h3>
 			<div class="card-body">
 				<img src="{{asset('build/images/' ~ randomGif.picture)}}" alt="">
-				<h5 class="card-title m-3">
+				<h4 class="card-title m-3">
 					Votes:
-					{{ randomGif.nbOfVotes }}</h5>
-				<a href="#" class="btn btn-primary randomBtn m-3">Add to your collection</a>
-				<a href="{{ path('app_gif_vote', {'id': randomGif.id}) }}" class="btn btn-primary randomBtn m-3">Add a vote</a>
+					{{ randomGif.nbOfVotes }}</h4>
+
+				{% if collectionCheck %}
+					<h4>This GIF is in your collection</h4>
+				{% endif %}
+
+				<a href="{{ path('app_gif_collect', {'id': randomGif.id}) }}" class="btn btn-primary randomBtn m-3">
+					{% if collectionCheck %}
+						Remove from
+					{% else %}
+						Add to
+					{% endif %}
+					your collection</a>
+				<a href="{{ path('app_gif_vote', {'id': randomGif.id}) }}" class="btn btn-primary randomBtn m-3">
+					Add a vote</a>
 			</div>
 		</div>
 

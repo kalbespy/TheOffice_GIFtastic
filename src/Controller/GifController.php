@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Gif;
 use App\Form\GifType;
 use App\Repository\GifRepository;
+use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -22,9 +23,14 @@ class GifController extends AbstractController
     }
 
     #[Route('/browse', name: 'app_gif_browse', methods: ['GET'])]
-    public function browse(GifRepository $gifRepository): Response
+    public function browse(UserRepository $userRepository, GifRepository $gifRepository): Response
     {
+
+        /** @var \App\Entity\User */
+        $user = $this->getUser();
+
         return $this->render('gif/browse.html.twig', [
+            'user' => $user,
             'gifs' => $gifRepository->findAll(),
         ]);
     }
@@ -37,8 +43,56 @@ class GifController extends AbstractController
         $gifCount = count($allGifs);
         $randomGif = $allGifs[rand(0, $gifCount - 1)];
 
+        /** @var \App\Entity\User */
+        $user = $this->getUser();
+        if ($user) {
+            $collectionCheck = $user->isInCollection($randomGif);
+        } else {
+            $collectionCheck = false;
+        }
+
         return $this->render('gif/randomGif.html.twig', [
             'randomGif' => $randomGif,
+            'collectionCheck' => $collectionCheck
+        ]);
+    }
+
+    #[Route('/myCollection', name: 'app_gif_collection', methods: ['GET'])]
+    public function collection(GifRepository $gifRepository): Response
+    {
+        $user = $this->getUser();
+
+        return $this->render('gif/myCollection.html.twig', [
+            'user' => $user,
+        ]);
+    }
+
+    #[Route('/{id}/collect', name: 'app_gif_collect', methods: ['GET'])]
+    public function colect(Gif $gif, UserRepository $userRepository): Response
+    {
+
+        if (!$gif) {
+            throw $this->createNotFoundException(
+                'No GIF with this id found in GIF\'s table.'
+            );
+        }
+
+        /** @var \App\Entity\User */
+        $user = $this->getUser();
+
+        if ($user) {
+            if ($user->isInCollection($gif)) {
+                $user->removeFromCollection($gif);
+            } else {
+                $user->addToCollection($gif);
+            }
+            $userRepository->save($user, true);
+        } else {
+            return $this->redirectToRoute('app_login');
+        }
+
+        return $this->render('gif/myCollection.html.twig', [
+            'user' => $user,
         ]);
     }
 
