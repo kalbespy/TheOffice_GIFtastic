@@ -8,9 +8,22 @@
 				<a class="nav-link m-2" href="{{ path("app_gif_browse") }}">Browse GIF</a>
 			</li>
 			<li>
-				<a class="nav-link m-2" href="{{ path("app_gif_index") }}">Log In</a>
+				{% if app.user %}
+					<a class="nav-link m-2" href="{{ path('app_gif_collection')}}">My collection</a>
+					<a class="nav-link m-2" href="{{ path('app_logout')}}">
+						Logout</a>
+				{% else %}
+					<a class="nav-link m-2" href="{{ path('app_login') }}">
+						Login</a>
+				{% endif %}
+				{% if is_granted('ROLE_ADMIN') %}
+					<a class="nav-link m-2 text-black" href="{{ path('app_gif_index') }}">
+						ADMIN</a>
+				{% endif  %}
 			</li>
 		</ul>
+
+
 	</div>
 	<div class="col-4 text-center m-auto">
 		<img class="footerLogo" src='{{asset('build/images/Dunder_Mifflin_Gif.jpg')}}' alt="Dunder Mifflin Gif Logo">
