@@ -58,68 +58,6 @@ class GifController extends AbstractController
         ]);
     }
 
-    #[IsGranted('ROLE_USER')]
-    #[Route('/myCollection', name: 'app_gif_collection', methods: ['GET'])]
-    public function collection(GifRepository $gifRepository): Response
-    {
-        $user = $this->getUser();
-
-        return $this->render('gif/myCollection.html.twig', [
-            'user' => $user,
-        ]);
-    }
-
-    #[Route('/{id}/collect', name: 'app_gif_collect', methods: ['GET'])]
-    public function collect(Gif $gif, UserRepository $userRepository): Response
-    {
-
-        if (!$gif) {
-            throw $this->createNotFoundException(
-                'No GIF with this id found in GIF\'s table.'
-            );
-        }
-
-        /** @var \App\Entity\User */
-        $user = $this->getUser();
-
-        if ($user) {
-            if ($user->isInCollection($gif)) {
-                $user->removeFromCollection($gif);
-            } else {
-                $user->addToCollection($gif);
-            }
-            $userRepository->save($user, true);
-        } else {
-            $this->addFlash('info', "You must be logged to collect GIF");
-            return $this->redirectToRoute('app_login');
-        }
-
-        $isInCollection = $user->isInCollection($gif);
-
-        return $this->json([
-            'isInCollection' => $isInCollection
-        ]);
-    }
-
-    #[IsGranted('ROLE_USER')]
-    #[Route('/{id}/remove', name: 'app_gif_remove', methods: ['GET'])]
-    public function remove(Gif $gif, UserRepository $userRepository): Response
-    {
-
-        if (!$gif) {
-            throw $this->createNotFoundException(
-                'No GIF with this id found in GIF\'s table.'
-            );
-        }
-
-        /** @var \App\Entity\User */
-        $user = $this->getUser();
-        $user->removeFromCollection($gif);
-        $userRepository->save($user, true);
-
-        return $this->json([]);
-    }
-
     #[IsGranted('ROLE_ADMIN')]
     #[Route('/new', name: 'app_gif_new', methods: ['GET', 'POST'])]
     public function new(Request $request, GifRepository $gifRepository): Response
@@ -134,7 +72,7 @@ class GifController extends AbstractController
             return $this->redirectToRoute('app_gif_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('gif/new.html.twig', [
+        return $this->render('gif/new.html.twig', [
             'gif' => $gif,
             'form' => $form,
         ]);
@@ -162,7 +100,7 @@ class GifController extends AbstractController
             return $this->redirectToRoute('app_gif_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('gif/edit.html.twig', [
+        return $this->render('gif/edit.html.twig', [
             'gif' => $gif,
             'form' => $form,
         ]);

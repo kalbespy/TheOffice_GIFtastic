@@ -17,7 +17,7 @@ class UserType extends AbstractType
         $builder
             ->add('email', EmailType::class, [
                 'attr' => [
-                    'placeholder' => 'Ex : dr.noailles@gmail.com',
+                    'placeholder' => 'Ex : k.malone@aol.com',
                     'maxlength' => 255,
                     'class' => 'crud-input',
                 ],

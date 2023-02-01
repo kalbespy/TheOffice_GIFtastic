@@ -27,7 +27,7 @@
 						{% endif %}
 					</a>
 				{% else %}
-					<a class="btn btn-primary randomBtn m-3" href="{{ path('app_login') }}">
+					<a class="btn btn-primary randomBtn m-3" href="{{ path('app_gif_collect', {'id': randomGif.id}) }}">
 						Add to your collection
 					</a>
 				{% endif %}
