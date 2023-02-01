@@ -15,11 +15,11 @@ class GifFixtures extends Fixture
             'picture' => 'AndyDance.gif',
         ],
         [
-            'title' => 'Bankrupcy !',
+            'title' => 'BANKRUPTCY !',
             'picture' => 'Banckrupcy.gif',
         ],
         [
-            'title' => 'Bear, Beets, Battlestar Galactica !',
+            'title' => 'Bear, Beets, Battlestar Galactica',
             'picture' => 'BearBeets.gif',
         ],
         [

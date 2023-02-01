@@ -18,12 +18,12 @@
 					<h5 class="card-title m-3">
 						Votes:
 						{{ gif.nbOfVotes }}</h5>
-					<a href="{{ path('app_gif_collect', {'id': gif.id}) }}" class="btn btn-primary randomBtn m-3">Add/Remove from your collection</a>
+					<a href="{{ path('app_gif_collect', {'id': gif.id}) }}" class="btn btn-primary randomBtn m-3">Remove from your collection</a>
 					<a href="{{ path('app_gif_vote', {'id': gif.id}) }}" class="btn btn-primary randomBtn m-3">Add a vote</a>
 				</div>
 			</div>
 		{% else %}
-			<p colspan="5">No records found</p>
+			<h3 colspan="5">You have no GIF in your collection.</h3>
 		{% endfor %}
 	</section>
 {% endblock %}

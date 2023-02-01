@@ -18,9 +18,7 @@
 						Votes:
 						{{ gif.nbOfVotes }}</h5>
 					<a href="{{ path('app_gif_collect', {'id': gif.id}) }}" class="btn btn-primary randomBtn m-3">
-
-
-						{% if gif.collectors == app.user %}
+						{% if gif in user.collection %}
 							Remove from
 						{% else %}
 							Add to

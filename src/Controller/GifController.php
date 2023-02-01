@@ -23,10 +23,9 @@ class GifController extends AbstractController
     }
 
     #[Route('/browse', name: 'app_gif_browse', methods: ['GET'])]
-    public function browse(UserRepository $userRepository, GifRepository $gifRepository): Response
+    public function browse(GifRepository $gifRepository): Response
     {
 
-        /** @var \App\Entity\User */
         $user = $this->getUser();
 
         return $this->render('gif/browse.html.twig', [
@@ -106,8 +105,17 @@ class GifController extends AbstractController
 
         $gifRepository->save($gif, true);
 
+        /** @var \App\Entity\User */
+        $user = $this->getUser();
+        if ($user) {
+            $collectionCheck = $user->isInCollection($gif);
+        } else {
+            $collectionCheck = false;
+        }
+
         return $this->render('gif/randomGif.html.twig', [
             'randomGif' => $gif,
+            'collectionCheck' => $collectionCheck
         ]);
     }
 
