@@ -17,13 +17,13 @@
 					<h5 class="card-title m-3">
 						Votes:
 						{{ gif.nbOfVotes }}</h5>
-					<a href="{{ path('app_gif_collect', {'id': gif.id}) }}" class="btn btn-primary randomBtn m-3">
+					<a class="btn {% if gif in user.collection %} btn-success disabled {% else %} btn-primary {% endif %}randomBtn m-3 collectBtnRandom" href="{{ path('app_gif_collect', {'id': gif.id}) }}">
 						{% if gif in user.collection %}
-							Remove from
+							GIF Collected
 						{% else %}
-							Add to
+							Add to your collection
 						{% endif %}
-						your collection</a>
+					</a>
 					<a href="{{ path('app_gif_vote', {'id': gif.id}) }}" class="btn btn-primary randomBtn m-3">Add a vote</a>
 				</div>
 			</div>

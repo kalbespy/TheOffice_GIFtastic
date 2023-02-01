@@ -21,13 +21,13 @@
 					<h4>This GIF is in your collection</h4>
 				{% endif %}
 
-				<a href="{{ path('app_gif_collect', {'id': randomGif.id}) }}" class="btn btn-primary randomBtn m-3">
+				<a class="btn {% if collectionCheck %} btn-success disabled{% endif %} btn-primary randomBtn m-3 collectBtnRandom" href="{{ path('app_gif_collect', {'id': randomGif.id}) }}">
 					{% if collectionCheck %}
-						Remove from
+						GIF Collected
 					{% else %}
-						Add to
+						Add to your collection
 					{% endif %}
-					your collection</a>
+				</a>
 				<a href="{{ path('app_gif_vote', {'id': randomGif.id}) }}" class="btn btn-primary randomBtn m-3">
 					Add a vote</a>
 			</div>
