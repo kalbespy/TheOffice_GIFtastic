@@ -67,7 +67,7 @@ class GifFixtures extends Fixture
             'picture' => 'DwightVictory.gif',
         ],
         [
-            'title' => 'Finger Zipper',
+            'title' => 'Finger in the Zipper',
             'picture' => 'FingerZipper.gif',
         ],
         [

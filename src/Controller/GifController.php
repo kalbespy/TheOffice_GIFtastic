@@ -6,11 +6,13 @@ use App\Entity\Gif;
 use App\Form\GifType;
 use App\Repository\GifRepository;
 use App\Repository\UserRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+#[IsGranted('ROLE_USER')]
 #[Route('/gif')]
 class GifController extends AbstractController
 {
@@ -26,6 +28,7 @@ class GifController extends AbstractController
     public function browse(GifRepository $gifRepository): Response
     {
 
+        /** @var \App\Entity\User */
         $user = $this->getUser();
 
         return $this->render('gif/browse.html.twig', [
@@ -67,7 +70,7 @@ class GifController extends AbstractController
     }
 
     #[Route('/{id}/collect', name: 'app_gif_collect', methods: ['GET'])]
-    public function colect(Gif $gif, UserRepository $userRepository): Response
+    public function collect(Gif $gif, UserRepository $userRepository): Response
     {
 
         if (!$gif) {
@@ -90,9 +93,29 @@ class GifController extends AbstractController
             return $this->redirectToRoute('app_login');
         }
 
-        return $this->render('gif/myCollection.html.twig', [
-            'user' => $user,
+        $isInCollection = $user->isInCollection($gif);
+
+        return $this->json([
+            'isInCollection' => $isInCollection
         ]);
+    }
+
+    #[Route('/{id}/remove', name: 'app_gif_remove', methods: ['GET'])]
+    public function remove(Gif $gif, UserRepository $userRepository): Response
+    {
+
+        if (!$gif) {
+            throw $this->createNotFoundException(
+                'No GIF with this id found in GIF\'s table.'
+            );
+        }
+
+        /** @var \App\Entity\User */
+        $user = $this->getUser();
+        $user->removeFromCollection($gif);
+        $userRepository->save($user, true);
+
+        return $this->json([]);
     }
 
     #[Route('/{id}/vote', name: 'app_gif_vote', methods: ['GET'])]
