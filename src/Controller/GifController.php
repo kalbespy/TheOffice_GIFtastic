@@ -12,10 +12,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[IsGranted('ROLE_USER')]
 #[Route('/gif')]
 class GifController extends AbstractController
 {
+    #[IsGranted('ROLE_ADMIN')]
     #[Route('/', name: 'app_gif_index', methods: ['GET'])]
     public function index(GifRepository $gifRepository): Response
     {
@@ -59,6 +59,7 @@ class GifController extends AbstractController
         ]);
     }
 
+    #[IsGranted('ROLE_USER')]
     #[Route('/myCollection', name: 'app_gif_collection', methods: ['GET'])]
     public function collection(GifRepository $gifRepository): Response
     {
@@ -90,6 +91,7 @@ class GifController extends AbstractController
             }
             $userRepository->save($user, true);
         } else {
+            $this->addFlash('info', "You must be logged to collect GIF");
             return $this->redirectToRoute('app_login');
         }
 
@@ -100,6 +102,29 @@ class GifController extends AbstractController
         ]);
     }
 
+    #[Route('/{id}/vote', name: 'app_gif_vote', methods: ['GET'])]
+    public function vote(Gif $gif, GifRepository $gifRepository): Response
+    {
+        /** @var \App\Entity\User */
+        $user = $this->getUser();
+
+        if ($user) {
+            $nbOfVotes = $gif->getNbOfVotes();
+            $nbOfVotes++;
+            $gif->setNbOfVotes($nbOfVotes);
+
+            $gifRepository->save($gif, true);
+            $collectionCheck = $user->isInCollection($gif);
+        } else {
+            $collectionCheck = false;
+            $this->addFlash('info', "You must be logged to vote");
+            return $this->redirectToRoute('app_login');
+        }
+
+        return $this->json([]);
+    }
+
+    #[IsGranted('ROLE_USER')]
     #[Route('/{id}/remove', name: 'app_gif_remove', methods: ['GET'])]
     public function remove(Gif $gif, UserRepository $userRepository): Response
     {
@@ -118,30 +143,7 @@ class GifController extends AbstractController
         return $this->json([]);
     }
 
-    #[Route('/{id}/vote', name: 'app_gif_vote', methods: ['GET'])]
-    public function vote(Gif $gif, GifRepository $gifRepository): Response
-    {
-
-        $nbOfVotes = $gif->getNbOfVotes();
-        $nbOfVotes++;
-        $gif->setNbOfVotes($nbOfVotes);
-
-        $gifRepository->save($gif, true);
-
-        /** @var \App\Entity\User */
-        $user = $this->getUser();
-        if ($user) {
-            $collectionCheck = $user->isInCollection($gif);
-        } else {
-            $collectionCheck = false;
-        }
-
-        return $this->render('gif/randomGif.html.twig', [
-            'randomGif' => $gif,
-            'collectionCheck' => $collectionCheck
-        ]);
-    }
-
+    #[IsGranted('ROLE_ADMIN')]
     #[Route('/new', name: 'app_gif_new', methods: ['GET', 'POST'])]
     public function new(Request $request, GifRepository $gifRepository): Response
     {
@@ -161,6 +163,7 @@ class GifController extends AbstractController
         ]);
     }
 
+    #[IsGranted('ROLE_ADMIN')]
     #[Route('/{id}', name: 'app_gif_show', methods: ['GET'])]
     public function show(Gif $gif): Response
     {
@@ -169,6 +172,7 @@ class GifController extends AbstractController
         ]);
     }
 
+    #[IsGranted('ROLE_ADMIN')]
     #[Route('/{id}/edit', name: 'app_gif_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Gif $gif, GifRepository $gifRepository): Response
     {
@@ -187,6 +191,7 @@ class GifController extends AbstractController
         ]);
     }
 
+    #[IsGranted('ROLE_ADMIN')]
     #[Route('/{id}', name: 'app_gif_delete', methods: ['POST'])]
     public function delete(Request $request, Gif $gif, GifRepository $gifRepository): Response
     {

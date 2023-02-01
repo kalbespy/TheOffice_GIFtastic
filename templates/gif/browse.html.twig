@@ -14,17 +14,32 @@
 				</h3>
 				<div class="card-body">
 					<img src="{{asset('build/images/' ~ gif.picture)}}" alt="">
-					<h5 class="card-title m-3">
+					<h4 class="card-title m-3">
 						Votes:
-						{{ gif.nbOfVotes }}</h5>
-					<a class="btn {% if gif in user.collection %} btn-success disabled {% else %} btn-primary {% endif %}randomBtn m-3 collectBtnRandom" href="{{ path('app_gif_collect', {'id': gif.id}) }}">
-						{% if gif in user.collection %}
-							GIF Collected
-						{% else %}
+						<span>
+							{{ gif.nbOfVotes }}</h4>
+					</span>
+					{% if app.user %}
+						<a class="btn {% if gif in user.collection %} btn-success disabled {% else %} btn-primary {% endif %}randomBtn m-3 collectBtnRandom" href="{{ path('app_gif_collect', {'id': gif.id}) }}">
+							{% if gif in user.collection %}
+								GIF Collected
+							{% else %}
+								Add to your collection
+							{% endif %}
+						</a>
+					{% else %}
+						<a class="btn btn-primary randomBtn m-3" href="{{ path('app_gif_collect', {'id': gif.id}) }}">
 							Add to your collection
-						{% endif %}
-					</a>
-					<a href="{{ path('app_gif_vote', {'id': gif.id}) }}" class="btn btn-primary randomBtn m-3">Add a vote</a>
+						</a>
+					{% endif %}
+
+					{% if app.user %}
+						<a class="btn btn-primary randomBtn m-3 voteBtn" href="{{ path('app_gif_vote', {'id': gif.id}) }}">Add a vote</a>
+					{% else %}
+						<a class="btn btn-primary randomBtn m-3" href="{{ path('app_gif_vote', {'id': gif.id}) }}">Add a vote</a>
+					{% endif %}
+
+
 				</div>
 			</div>
 		{% else %}
