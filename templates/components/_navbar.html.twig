@@ -9,7 +9,7 @@
 				<a class="nav-link m-2 fs-3 fw-bold" href="{{ path("app_gif_random") }}">Random GIF</a>
 				<a class="nav-link m-2 fs-3 fw-bold" href="{{ path("app_gif_browse") }}">Browse GIFs</a>
 				{% if app.user %}
-					<a class="nav-link m-2 fs-3 fw-bold" href="#">My collection</a>
+					<a class="nav-link m-2 fs-3 fw-bold" href="{{ path('app_gif_collection')}}">My collection</a>
 					<a class="nav-link m-2 fs-3 fw-bold" href="{{ path('app_logout')}}">
 						Logout</a>
 				{% else %}

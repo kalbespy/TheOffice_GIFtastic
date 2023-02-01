@@ -192,4 +192,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+
+    public function isInCollection(Gif $gif): bool
+    {
+        if ($this->getCollection()->contains($gif)) {
+            return true;
+        }
+        return false;
+    }
 }
