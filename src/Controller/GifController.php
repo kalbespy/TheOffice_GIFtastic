@@ -40,7 +40,6 @@ class GifController extends AbstractController
     #[Route('/random', name: 'app_gif_random', methods: ['GET'])]
     public function random(GifRepository $gifRepository): Response
     {
-
         $allGifs = $gifRepository->findAll();
         $gifCount = count($allGifs);
         $randomGif = $allGifs[rand(0, $gifCount - 1)];
@@ -100,28 +99,6 @@ class GifController extends AbstractController
         return $this->json([
             'isInCollection' => $isInCollection
         ]);
-    }
-
-    #[Route('/{id}/vote', name: 'app_gif_vote', methods: ['GET'])]
-    public function vote(Gif $gif, GifRepository $gifRepository): Response
-    {
-        /** @var \App\Entity\User */
-        $user = $this->getUser();
-
-        if ($user) {
-            $nbOfVotes = $gif->getNbOfVotes();
-            $nbOfVotes++;
-            $gif->setNbOfVotes($nbOfVotes);
-
-            $gifRepository->save($gif, true);
-            $collectionCheck = $user->isInCollection($gif);
-        } else {
-            $collectionCheck = false;
-            $this->addFlash('info', "You must be logged to vote");
-            return $this->redirectToRoute('app_login');
-        }
-
-        return $this->json([]);
     }
 
     #[IsGranted('ROLE_USER')]
