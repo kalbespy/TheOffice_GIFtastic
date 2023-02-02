@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Dundies Award
+{% endblock %}
+
+{% block body %}
+	<section class="text-center">
+		<main class="container-fluid">
+			<h1 class="text-center my-4">Dundies award</h1>
+
+			<div class="my-5 d-lg-flex flex-lg-row justify-content-center align-items-center text-center">
+				<img class="col-6 mb-5 col-lg-1 mb-lg-0" src="{{asset('build/images/dundies.png')}}" alt="">
+				<h2 class="text-center m-auto fst-italic col-6 col-lg-3 mb-5 m-lg-0">And the Dundie award of the hottest GIF of The Office goes to ....</h2>
+				<img class="d-none d-lg-inline col-lg-1 mb-lg-5" src="{{asset('build/images/dundies.png')}}" alt="">
+			</div>
+
+			<div class="card col-10 col-lg-3 text-center m-auto mt-5 mb-5">
+				<h3 class="card-header">
+					{{dundiesGif.title}}
+				</h3>
+				<div class="card-body">
+					<img class="col-12" src="{{asset('build/images/' ~ dundiesGif.picture)}}" alt="">
+					<h4 class="card-title m-3 text-black">
+						Votes:
+						<span>{{ dundiesGif.nbOfVotes }}</span>
+					</h4>
+
+					{% if app.user %}
+						<a class="col-10 btn {% if collectionCheck %} btn-success disabled{% endif %} btn-primary randomBtn m-3 collectBtnRandom" href="{{ path('app_gif_collect', {'id': dundiesGif.id}) }}">
+							{% if collectionCheck %}
+								GIF Collected
+							{% else %}
+								Add to your collection
+							{% endif %}
+						</a>
+					{% else %}
+						<a class="col-10 btn btn-primary randomBtn m-3" href="{{ path('app_gif_collect', {'id': dundiesGif.id}) }}">
+							Add to your collection
+						</a>
+					{% endif %}
+				</div>
+			</div>
+		</main>
+	</section>
+{% endblock %}
