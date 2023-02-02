@@ -4,43 +4,46 @@
 {% endblock %}
 
 {% block body %}
-	<h1>User index</h1>
+	<main class="m-3">
+		<h1>User index</h1>
 
-	<table class="table">
-		<thead>
-			<tr>
-				<th>Id</th>
-				<th>Email</th>
-				<th>Roles</th>
-				<th>Pseudo</th>
-				<th>Collection</th>
-				<th>GIFs Voted</th>
-				<th>actions</th>
-			</tr>
-		</thead>
-		<tbody>
-			{% for user in users %}
+		<a class="btn btn-primary originalbtn col-1 my-4" href="{{ path('app_user_new') }}">Create new</a>
+
+		<table class="table">
+			<thead>
 				<tr>
-					<td>{{ user.id }}</td>
-					<td>{{ user.email }}</td>
-					<td>{{ user.roles ? user.roles|json_encode : '' }}</td>
-					<td>{{ user.pseudo }}</td>
-					<td>{{ user.collection|length }}</td>
-					<td>{{ user.votes|length }}</td>
-
-					<td>
-						<a href="{{ path('app_user_show', {'id': user.id}) }}">show</a>
-						<a href="{{ path('app_user_edit', {'id': user.id}) }}">edit</a>
-					</td>
+					<th>Id</th>
+					<th>Email</th>
+					<th>Roles</th>
+					<th>Pseudo</th>
+					<th>Collection</th>
+					<th>GIFs Voted</th>
+					<th>Actions</th>
 				</tr>
-			{% else %}
-				<tr>
-					<td colspan="7">no records found</td>
-				</tr>
-			{% endfor %}
-		</tbody>
-	</table>
+			</thead>
+			<tbody>
+				{% for user in users %}
+					<tr>
+						<td>{{ user.id }}</td>
+						<td>{{ user.email }}</td>
+						<td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+						<td>{{ user.pseudo }}</td>
+						<td>{{ user.collection|length }}</td>
+						<td>{{ user.votes|length }}</td>
 
-	<a href="{{ path('app_user_new') }}">Create new</a>
+						<td>
+							<a class="btn btn-primary originalbtn d-block mb-3" href=" {{ path('app_user_show', {'id': user.id} ) }}">Show</a>
+							<a class="btn btn-secondary originalbtn d-block" href="{{ path('app_user_edit', {'id': user.id}) }}">Edit</a>
+						</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="7">no records found</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</main>
+
 
 {% endblock %}

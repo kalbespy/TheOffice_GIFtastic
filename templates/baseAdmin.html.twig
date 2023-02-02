@@ -19,12 +19,16 @@
 	</head>
 
 	<body class="min-vh-100">
-
 		{% include "components/_navbar.html.twig" %}
-		{% include "components/_navBarAdmin.html.twig" %}
 
-		{% block body %}{% endblock %}
-		{% include "components/_footer.html.twig" %}
+		<div class="container-fluid d-md-flex p-0 min-vh-100">
+			<div class="me-5">
+				{% include "components/_navBarAdmin.html.twig" %}
+			</div>
+			<div class="col-9"> {% block body %}{% endblock %}
+				</div>
+			</div>
+			{% include "components/_footer.html.twig" %}
 
-	</body>
-</html>
+		</body>
+	</html>

@@ -4,9 +4,20 @@
 {% endblock %}
 
 {% block body %}
-	<h1>Create new User</h1>
+	<main class="m-3">
 
-	{{ include('user/_form.html.twig') }}
 
-	<a href="{{ path('app_user_index') }}">back to list</a>
+		<div class="text-center m-auto">
+			<h1>Create new User</h1>
+			<h2 class="mt-5 fst-italic">
+				Coming soon</h2>
+			<img class="m-auto my-5" src="{{asset('build/images/ThatsWhatSheSaid.gif')}}" alt="">
+			<div>
+				<a href="{{ path('app_user_index') }}">Back to list</a>
+			</div>
+		</div>
+
+
+	</main>
+
 {% endblock %}
