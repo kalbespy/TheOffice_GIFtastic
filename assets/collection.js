@@ -68,7 +68,7 @@ function addVote(e) {
     const voteLink = e.currentTarget;
     const link = voteLink.href;
     const voteCount = voteLink.previousElementSibling.previousElementSibling.firstElementChild
-
+    console.log(voteCount);
     let voteNb = parseInt(voteCount.innerText);
     voteNb++
 
