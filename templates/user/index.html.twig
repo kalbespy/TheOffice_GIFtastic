@@ -26,7 +26,13 @@
 					<tr>
 						<td>{{ user.id }}</td>
 						<td>{{ user.email }}</td>
-						<td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+						<td>
+							{% if 'ROLE_ADMIN' in user.roles %}
+								ADMIN
+							{% else %}
+								USER
+							{% endif %}
+						</td>
 						<td>{{ user.pseudo }}</td>
 						<td>{{ user.collection|length }}</td>
 						<td>{{ user.votes|length }}</td>
