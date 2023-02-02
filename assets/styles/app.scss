@@ -79,8 +79,16 @@ body {
     font-weight: 500;
 }
 
+.loginBtn {
+    border-radius: 50px;
+    font-size: 20px;
+    height: 50px;
+    font-weight: 500;
+    margin-top: 15px;
+}
+
 .h1Home {
-    background-color: rgba(0, 0, 0, 0.623);
+    background-color: rgba(0, 0, 0, 0.849);
     color: white;
     border-radius: 20px;
 }
@@ -110,6 +118,17 @@ body {
 
 /** END OF ADMIN - GIF PAGE **/
 
+/** LOGIN PAGE **/
+
+.loginForm {
+    background: rgba(250, 247, 242, 0.33);
+    border-radius: 40px;
+}
+
+.inputLogin {
+    border-radius: 30px;
+    border: none;
+}
 
 @media screen and (min-width: 992px) {
 
@@ -150,11 +169,11 @@ body {
     }
 
     .h1Home {
-        background-color: rgba(0, 0, 0, 0.623);
+        background-color: rgba(0, 0, 0, 0.849);
         color: white;
         padding: 50px;
         border: 1px solid black;
-        border-radius: 100px;
+        border-radius: 20px;
         margin-right: 100px;
         margin-left: 100px;
         margin-bottom: 50px;
@@ -167,6 +186,15 @@ body {
         margin: 90px;
         font-size: 32px;
         font-style: italic;
+    }
+
+    .loginBtn {
+        border-radius: 50px;
+        font-size: 18px;
+        height: 50px;
+        width: 200px;
+        font-weight: 500;
+        margin-top: 20px;
     }
 
     /** END OF HOMEPAGE **/
