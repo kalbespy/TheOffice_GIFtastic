@@ -4,46 +4,47 @@
 {% endblock %}
 
 {% block body %}
-	<section class="min-vh-100 text-center">
-		<h1 class="text-center m-5">Random GIF</h1>
+	<section class="text-center">
+		<main class="container-fluid">
+			<h1 class="text-center my-4">Random GIF</h1>
 
-		<div class="card col-4 text-center m-auto">
-			<h3 class="card-header">
-				{{randomGif.title}}
-			</h3>
-			<div class="card-body">
-				<img src="{{asset('build/images/' ~ randomGif.picture)}}" alt="">
-				<h4 class="card-title m-3">
-					Votes:
-					<span>{{ randomGif.nbOfVotes }}</span>
-				</h4>
+			<div class="card col-10 col-lg-3 text-center m-auto">
+				<h3 class="card-header">
+					{{randomGif.title}}
+				</h3>
+				<div class="card-body">
+					<img class="col-12" src="{{asset('build/images/' ~ randomGif.picture)}}" alt="">
+					<h4 class="card-title m-3 text-black">
+						Votes:
+						<span>{{ randomGif.nbOfVotes }}</span>
+					</h4>
 
-				{% if app.user %}
-					<a class="btn {% if collectionCheck %} btn-success disabled{% endif %} btn-primary randomBtn m-3 collectBtnRandom" href="{{ path('app_gif_collect', {'id': randomGif.id}) }}">
-						{% if collectionCheck %}
-							GIF Collected
-						{% else %}
+					{% if app.user %}
+						<a class="col-10 btn {% if collectionCheck %} btn-success disabled{% endif %} btn-primary randomBtn m-3 collectBtnRandom" href="{{ path('app_gif_collect', {'id': randomGif.id}) }}">
+							{% if collectionCheck %}
+								GIF Collected
+							{% else %}
+								Add to your collection
+							{% endif %}
+						</a>
+					{% else %}
+						<a class="col-10 btn btn-primary randomBtn m-3" href="{{ path('app_gif_collect', {'id': randomGif.id}) }}">
 							Add to your collection
-						{% endif %}
-					</a>
-				{% else %}
-					<a class="btn btn-primary randomBtn m-3" href="{{ path('app_gif_collect', {'id': randomGif.id}) }}">
-						Add to your collection
-					</a>
-				{% endif %}
+						</a>
+					{% endif %}
 
-				{% if app.user %}
-					<a class="btn btn-primary randomBtn m-3 voteBtn" href="{{ path('app_gif_vote', {'id': randomGif.id}) }}">
-						Add a vote</a>
-				{% else %}
-					<a class="btn btn-primary randomBtn m-3" href="{{ path('app_gif_vote', {'id': randomGif.id}) }}">
-						Add a vote</a>
-				{% endif %}
+					{% if app.user %}
+						<a class="col-10 btn btn-primary randomBtn m-3 voteBtn" href="{{ path('app_gif_vote', {'id': randomGif.id}) }}">
+							Add a vote</a>
+					{% else %}
+						<a class="col-10 btn btn-primary randomBtn m-3" href="{{ path('app_gif_vote', {'id': randomGif.id}) }}">
+							Add a vote</a>
+					{% endif %}
+				</div>
 			</div>
-		</div>
 
-		<a href="{{ path('app_gif_random') }}" class="btn btn-primary randomBtn m-3 mb-0">Load again</a>
-		<p class="fst-italic">(That's what she said)</p>
-
+			<a href="{{ path('app_gif_random') }}" class="btn btn-primary randomBtn m-3 mb-0 mt-4 col-6 col-lg-2">Load again</a>
+			<p class="fst-italic mb-5 mt-2">(That's what she said)</p>
+		</main>
 	</section>
 {% endblock %}

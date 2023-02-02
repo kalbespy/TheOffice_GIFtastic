@@ -4,21 +4,34 @@
 {% endblock %}
 
 {% block body %}
-	<section class="homeBody min-vh-100">
-		<h1 class="mx-auto col-8 text-center h1Home">Welcome to The Office GIF-tastic Collection</h1>
+	<section class="bodySection py-5">
+		<main class="container-fluid">
+			<div class="row text-center justify-content-center justify-content-lg-start">
+				<div class="col-10 col-lg-7 p-auto divH1Home">
+					<h1 class="mt-5 h1Home p-3">The Office:
+						<br>
+						GIF-tastic Collection</h1>
+				</div>
 
-		<h2 class="mx-auto col-10 text-center h2Home">Experience the wackiness of Dunder Mifflin anytime, anywhere with our GIFs</h2>
 
-		<div class="text-center">
-			<a class="btn btn-primary originalBtn m-5" href="{{ path("app_gif_random") }}">
-				<p class="my-3">See Random Gif</p>
-			</a>
-			<a class="btn btn-primary originalBtn m-5" href="{{ path("app_gif_browse") }}">
-				<p class="my-3">Browse Collection</p>
-			</a>
+				<h2 class="h2Home col-10 col-lg-7 m-5 ms-lg-2">Experience the wackiness of Dunder Mifflin anytime, anywhere with our GIFs</h2>
 
-			<h2 class="mt-5">Have Fun !</h2>
-			<img src="{{asset('build/images/HaveFun.gif')}}" alt="">
+				<div class="col-lg-7">
+					<a class="btn btn-primary originalBtn col-7 col-lg-4 p-3 m-lg-3 mb-4 p-auto pt-lg-4" href="{{ path("app_gif_random") }}">
+						See Random Gif
+					</a>
+
+					<a class="btn btn-primary originalBtn col-7 col-lg-4 p-3 m-lg-3 mb-4 p-auto pt-lg-4" href="{{ path("app_gif_browse") }}">
+						Browse Collection
+					</a>
+				</div>
+
+				<div class="col-lg-7">
+					<img class="text-center mt-5 col-10 col-lg-4" src="{{asset('build/images/HaveFun.gif')}}" alt="">
+				</div>
+				<h2 class="h2Home col-10 col-lg-7 m-5 ms-lg-2">Have Fun !</h2>
+
+			</div>
 		</div>
-	</section>
-{% endblock %}
+	</main>
+</section>{% endblock %}

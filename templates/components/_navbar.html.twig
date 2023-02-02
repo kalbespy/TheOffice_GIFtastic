@@ -1,23 +1,25 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
 	<div class="container-fluid">
-		<a class="navbar-brand" href='{{ path("home") }}'><img class="navLogo" src='{{asset('build/images/LogoTheOfficeGif.png')}}' alt=""></a>
+		<a class="navbar-brand" href='{{ path("home") }}'>
+			<img class="navLogo col-lg-1" src='{{asset('build/images/LogoTheOfficeGif.png')}}' alt="">
+		</a>
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
 		<div class="collapse navbar-collapse text-end justify-content-lg-end" id="navbarNavAltMarkup">
 			<div class="navbar-nav">
-				<a class="nav-link m-2 fs-3 fw-bold" href="{{ path("app_gif_random") }}">Random GIF</a>
-				<a class="nav-link m-2 fs-3 fw-bold" href="{{ path("app_gif_browse") }}">Browse GIFs</a>
+				<a class="nav-link m-2" href="{{ path("app_gif_random") }}">Random GIF</a>
+				<a class="nav-link m-2" href="{{ path("app_gif_browse") }}">Browse GIFs</a>
 				{% if app.user %}
-					<a class="nav-link m-2 fs-3 fw-bold" href="{{ path('app_gif_collection')}}">My collection</a>
-					<a class="nav-link m-2 fs-3 fw-bold" href="{{ path('app_logout')}}">
+					<a class="nav-link m-2" href="{{ path('app_gif_collection')}}">My collection</a>
+					<a class="nav-link m-2" href="{{ path('app_logout')}}">
 						Logout</a>
 				{% else %}
-					<a class="nav-link m-2 fs-3 fw-bold" href="{{ path('app_login') }}">
+					<a class="nav-link m-2" href="{{ path('app_login') }}">
 						Login</a>
 				{% endif %}
 				{% if is_granted('ROLE_ADMIN') %}
-					<a class="nav-link m-2 fs-3 fw-bold text-black" href="{{ path('app_gif_index') }}">
+					<a class="nav-link m-2 text-black" href="{{ path('app_gif_index') }}">
 						ADMIN</a>
 				{% endif  %}
 			</div>
