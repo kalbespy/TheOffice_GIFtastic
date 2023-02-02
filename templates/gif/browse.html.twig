@@ -20,8 +20,9 @@
 							<h4 class="card-title m-3">
 								Votes:
 								<span>
-									{{ gif.nbOfVotes }}</h4>
-							</span>
+									{{ gif.nbOfVotes }}</span>
+							</h4>
+
 							{% if app.user %}
 								<a class="btn {% if gif in user.collection %} btn-success disabled {% else %} btn-primary {% endif %}randomBtn m-3 collectBtnRandom" href="{{ path('app_gif_collect', {'id': gif.id}) }}">
 									{% if gif in user.collection %}
