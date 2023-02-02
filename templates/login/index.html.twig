@@ -1,36 +1,58 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello LoginController!
+{% block title %}Login
 {% endblock %}
 
 {% block body %}
-	{% if error %}
-		<div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-	{% endif %}
+	<section class="bodySection py-5">
+		<main class="container-fluid">
+			<div class="row text-center justify-content-center justify-content-lg-start">
+				<div class="col-10 col-lg-7 p-auto divH1Home">
+					<h1 class="ms-lg-3 mt-5 h1Home p-3">The Office:
+						<br>
+						GIF-tastic Collection</h1>
+				</div>
 
-	<h1>Connexion</h1>
+				<h2 class="col-10 col-lg-6 m-5 mt-lg-2 mb-0 ms-lg-2 fs-1">Login</h2>
 
-	<form class="d-flex row m-5 col-3" action="{{ path('app_login') }}" method="post">
-		<div class="d-flex row m-3">
-			<label for=" username">Email:</label>
-			<input type="text" id="username" name="_username" value="{{ last_username }}">
-		</div>
 
-		<div class="d-flex row m-3">
-			<label for="password">Password:</label>
-			<input type="password" id="password" name="_password">
-		</div>
+				<div class="p-5 pt-2">
+					<div class="loginForm d-flex justify-content-center col-lg-5 ms-lg-5">
+						<form class="m-5" action="{{ path('app_login') }}" method="post">
+							<div class="mb-4">
+								<label class="fw-bold d-block mb-2" for=" username">Email:</label>
+								<input class="inputLogin p-2 text-center" type="text" id="username" name="_username" value="{{ last_username }}">
+							</div>
 
-		<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+							<div class="mb-4">
+								<label class="fw-bold d-block mb-2" for="password">Password:</label>
+								<input class="inputLogin p-2 text-center" type="password" id="password" name="_password">
+							</div>
 
-		<div class="d-flex row m-3">
-			<button type="submit">Login</button>
-		</div>
+							<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
-		<!-- If you want to control the URL the user is redirected to on success <input type="hidden" name="_target_path" value="/account"> #} -->
-	</form>
-	<p>Don't have an account yet ? Click here to
-		<a href="{{ path('app_register') }}">Register</a>
-	</p>
+							{% if error %}
+								<div class="alert alert-danger text-center mt-3">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+							{% endif %}
+							{% for category, messages in app.flashes %}
+								{% for message in messages %}
+									<div id="flashMessage" class="p-2 mt-3 alert alert-{{ category }} alert-dismissible fade show mx-4" role="alert">
+										{{ message }}
+									</div>
+								{% endfor %}
+							{% endfor %}
+							<div>
+								<button class="btn btn-primary loginBtn col-12" type="submit">Login</button>
+							</div>
 
+							<!-- If you want to control the URL the user is redirected to on success <input type="hidden" name="_target_path" value="/account"> #} -->
+						</form>
+					</div>
+				</div>
+				<p class="col-10 col-lg-6 m-5 mt-0 mb-0 ms-lg-2 fs-4">Don't have an account yet ? Click here to
+					<a href="{{ path('app_register') }}">Register</a>
+				</p>
+			</div>
+		</main>
+	</section>
 {% endblock %}

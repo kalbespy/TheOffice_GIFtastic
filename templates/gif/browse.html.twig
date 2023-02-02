@@ -1,28 +1,53 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Gif index
+{% block title %}Browse GIFs
 {% endblock %}
 
 {% block body %}
-	<h1>Browse GIFs</h1>
 
-	<section class="d-flex flex-row flex-wrap justify-content-around">
-		{% for gif in gifs|sort ((b, a) => a.nbOfVotes <=> b.nbOfVotes) %}
-			<div class="card col-3 text-center m-3">
-				<h3 class="card-header">
-					{{gif.title}}
-				</h3>
-				<div class="card-body">
-					<img src="{{asset('build/images/' ~ gif.picture)}}" alt="">
-					<h5 class="card-title m-3">
-						Votes:
-						{{ gif.nbOfVotes }}</h5>
-					<a href="#" class="btn btn-primary randomBtn m-3">Add to your collection</a>
-					<a href="{{ path('app_gif_vote', {'id': gif.id}) }}" class="btn btn-primary randomBtn m-3">Add a vote</a>
-				</div>
+	<section class="text-center">
+		<main class="container-fluid text-center">
+			<h1 class="text-center my-4">Browse GIFs</h1>
+			<div class="row justify-content-center">
+
+				{% for gif in gifs|sort ((b, a) => a.nbOfVotes <=> b.nbOfVotes) %}
+					<div class="card col-10 col-lg-3 text-center m-auto mb-4 p-0 m-lg-4">
+						<h3 class="card-header col-12">
+							{{gif.title}}
+						</h3>
+						<div class="card-body">
+							<img class="col-12" src="{{asset('build/images/' ~ gif.picture)}}" alt="">
+							<h4 class="card-title m-3">
+								Votes:
+								<span>
+									{{ gif.nbOfVotes }}</span>
+							</h4>
+
+							{% if app.user %}
+								<a class="btn {% if gif in user.collection %} btn-success disabled {% else %} btn-primary {% endif %}randomBtn m-3 collectBtnRandom" href="{{ path('app_gif_collect', {'id': gif.id}) }}">
+									{% if gif in user.collection %}
+										GIF Collected
+									{% else %}
+										Add to your collection
+									{% endif %}
+								</a>
+							{% else %}
+								<a class="btn btn-primary randomBtn m-3" href="{{ path('app_gif_collect', {'id': gif.id}) }}">
+									Add to your collection
+								</a>
+							{% endif %}
+
+							{% if app.user %}
+								<a class="btn btn-primary randomBtn m-3 voteBtn" href="{{ path('app_gif_vote', {'id': gif.id}) }}">Add a vote</a>
+							{% else %}
+								<a class="btn btn-primary randomBtn m-3" href="{{ path('app_gif_vote', {'id': gif.id}) }}">Add a vote</a>
+							{% endif %}
+						</div>
+					</div>
+				{% else %}
+					<p colspan="5">No records found</p>
+				{% endfor %}
 			</div>
-		{% else %}
-			<p colspan="5">No records found</p>
-		{% endfor %}
+		</main>
 	</section>
 {% endblock %}

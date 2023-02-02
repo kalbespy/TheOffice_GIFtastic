@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}GIF Collection
+{% endblock %}
+
+{% block body %}
+
+	<section class="text-center">
+		<main class="container-fluid text-center">
+			<h1 class="text-center my-4">My GIF Collection</h1>
+			<div class="row justify-content-center">
+
+				{% for gif in user.collection %}
+					<div class="card col-10 col-lg-3 text-center m-auto mb-4 p-0 m-lg-4">
+						<h3 class="card-header col-12">
+							{{gif.title}}
+						</h3>
+						<div class="card-body">
+							<img class="col-12" src="{{asset('build/images/' ~ gif.picture)}}" alt="">
+							<h4 class="card-title m-3">
+								Votes:
+								<span>
+									{{ gif.nbOfVotes }}</span>
+							</h4>
+							<a class="btn btn-primary randomBtn m-3 voteBtn" href="{{ path('app_gif_vote', {'id': gif.id}) }}">Add a vote</a>
+							<a class="btn btn-danger randomBtn m-3 collectionBtn" href="{{ path('app_gif_remove', {'id': gif.id}) }}">Remove</a>
+						</div>
+					</div>
+				{% else %}
+					<h3 class="fst-italic mt-5 pt-5">You have no GIF in your collection.</h3>
+				{% endfor %}
+			</div>
+		</main>
+	</section>
+{% endblock %}

@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -34,6 +36,20 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(type: 'boolean')]
     private $isVerified = false;
+
+    #[ORM\ManyToMany(targetEntity: Gif::class, inversedBy: 'voters')]
+    #[ORM\JoinTable(name: 'vote')]
+    private Collection $vote;
+
+    #[ORM\ManyToMany(targetEntity: Gif::class, inversedBy: 'collectors')]
+    #[ORM\JoinTable(name: 'collection')]
+    private Collection $collection;
+
+    public function __construct()
+    {
+        $this->vote = new ArrayCollection();
+        $this->collection = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -127,5 +143,61 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->isVerified = $isVerified;
 
         return $this;
+    }
+
+    /**
+     * @return Collection<int, Gif>
+     */
+    public function getVotes(): Collection
+    {
+        return $this->vote;
+    }
+
+    public function addToVotes(Gif $vote): self
+    {
+        if (!$this->vote->contains($vote)) {
+            $this->vote->add($vote);
+        }
+
+        return $this;
+    }
+
+    public function removeFromVotes(Gif $vote): self
+    {
+        $this->vote->removeElement($vote);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Gif>
+     */
+    public function getCollection(): Collection
+    {
+        return $this->collection;
+    }
+
+    public function addToCollection(Gif $collection): self
+    {
+        if (!$this->collection->contains($collection)) {
+            $this->collection->add($collection);
+        }
+
+        return $this;
+    }
+
+    public function removeFromCollection(Gif $collection): self
+    {
+        $this->collection->removeElement($collection);
+
+        return $this;
+    }
+
+    public function isInCollection(Gif $gif): bool
+    {
+        if ($this->getCollection()->contains($gif)) {
+            return true;
+        }
+        return false;
     }
 }

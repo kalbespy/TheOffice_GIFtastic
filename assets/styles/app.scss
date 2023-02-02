@@ -2,6 +2,7 @@
 
 // customize some Bootstrap variables
 $primary: #E79A30;
+$danger: rgb(197, 71, 71);
 
 // the ~ allows you to reference things in node_modules
 @import "~bootstrap/scss/bootstrap";
@@ -12,38 +13,41 @@ $primary: #E79A30;
     font-family: 'Roboto', sans-serif;
 }
 
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    background: url("/assets/images/paperBackground.jpg");
+    background-size: cover;
+}
+
 .bodyContent {
     margin-bottom: 100px;
-}
-
-h1 {
-    font-size: 64px;
-    font-weight: 700;
-}
-
-h2 {
-    font-size: 48px;
-    font-weight: 400;
 }
 
 /** NAVBAR **/
 .navbar {
     background-color: $primary;
+    width: 100%;
+    left: 0;
+    top: 0;
+    font-size: 24px;
 }
 
 .navLogo {
-    width: 500px;
+    width: 250px;
 }
 
 .navbar-toggler {
     width: 100px;
-    height: 100px;
+    height: 75px;
     padding: 0;
 }
 
 .navbar-toggler-icon {
     width: 80px;
-    height: 100px;
+    height: 75px;
 }
 
 /** END OF NAVBAR **/
@@ -52,44 +56,46 @@ h2 {
 .footer {
     background-color: $primary;
     width: 100%;
+    left: 0;
+    bottom: 0;
     min-height: 10vh;
+    font-size: 20px;
 }
 
 .footerLogo {
-    width: 300px;
+    width: 200px;
 }
 
 /** END OF FOOTER **/
 
 /** HOMEPAGE **/
-.homeBody {
+.bodySection {
     background: url("/assets/images/The-Office-US-US-Office-background-340.jpg") no-repeat;
-    height: fit-content;
     background-size: cover;
-    padding-bottom: 100px;
-    padding-top: 100px;
+    padding: 0;
 }
 
 .originalBtn {
     border-radius: 50px;
-    font-size: 34px;
-    height: 100px;
-    width: 500px;
+    font-size: 20px;
     font-weight: 500;
 }
 
+.loginBtn {
+    border-radius: 50px;
+    font-size: 20px;
+    height: 50px;
+    font-weight: 500;
+    margin-top: 15px;
+}
+
 .h1Home {
-    background-color: rgba(0, 0, 0, 0.623);
+    background-color: rgba(0, 0, 0, 0.849);
     color: white;
-    padding: 50px;
-    border: 1px solid black;
-    border-radius: 100px;
-    margin-bottom: 50px;
+    border-radius: 20px;
 }
 
 .h2Home {
-    margin-top: 150px;
-    margin-bottom: 90px;
     font-style: italic;
 }
 
@@ -98,10 +104,9 @@ h2 {
 /** RANDOM GIF PAGE **/
 
 .randomBtn {
-    border-radius: 50px;
-    font-size: 34px;
     height: fit-content;
-    width: 300px;
+    border-radius: 50px;
+    font-size: 20px;
     font-weight: 500;
 }
 
@@ -114,3 +119,85 @@ h2 {
 }
 
 /** END OF ADMIN - GIF PAGE **/
+
+/** LOGIN PAGE **/
+
+.loginForm {
+    background: rgba(250, 247, 242, 0.33);
+    border-radius: 40px;
+}
+
+.inputLogin {
+    border-radius: 30px;
+    border: none;
+}
+
+@media screen and (min-width: 992px) {
+
+    /** NAVBAR **/
+    .navbar {
+        max-height: 120px;
+        font-size: 24px;
+    }
+
+    .navLogo {
+        width: 300px;
+    }
+
+    /** END OF NAVBAR **/
+
+    /** HOMEPAGE **/
+
+    .container {
+        width: 100%;
+    }
+
+    .divEspace {
+        width: 40%
+    }
+
+    .bodySection {
+        background: url("/assets/images/The-Office-US-US-Office-background-340.jpg") no-repeat;
+        background-size: cover;
+        padding: 0;
+    }
+
+    .originalBtn {
+        border-radius: 50px;
+        font-size: 28px;
+        height: 90px;
+        width: 300px;
+        font-weight: 500;
+    }
+
+    .h1Home {
+        background-color: rgba(0, 0, 0, 0.849);
+        color: white;
+        padding: 50px;
+        border: 1px solid black;
+        border-radius: 20px;
+        margin-right: 100px;
+        margin-left: 100px;
+        margin-bottom: 50px;
+        font-size: 40px;
+        font-weight: 700;
+    }
+
+
+    .h2Home {
+        font-size: 32px;
+        font-style: italic;
+    }
+
+    .loginBtn {
+        border-radius: 50px;
+        font-size: 18px;
+        height: 50px;
+        width: 200px;
+        font-weight: 500;
+        margin-top: 20px;
+    }
+
+    /** END OF HOMEPAGE **/
+
+}

@@ -15,11 +15,11 @@ class GifFixtures extends Fixture
             'picture' => 'AndyDance.gif',
         ],
         [
-            'title' => 'Bankrupcy !',
-            'picture' => 'Banckrupcy.gif',
+            'title' => 'BANKRUPTCY !',
+            'picture' => 'Banckruptcy.gif',
         ],
         [
-            'title' => 'Bear, Beets, Battlestar Galactica !',
+            'title' => 'Bear, Beets, Battlestar Galactica',
             'picture' => 'BearBeets.gif',
         ],
         [
@@ -67,7 +67,7 @@ class GifFixtures extends Fixture
             'picture' => 'DwightVictory.gif',
         ],
         [
-            'title' => 'Finger Zipper',
+            'title' => 'Finger in the Zipper',
             'picture' => 'FingerZipper.gif',
         ],
         [
@@ -91,7 +91,7 @@ class GifFixtures extends Fixture
             'picture' => 'Jello.gif',
         ],
         [
-            'title' => 'Oh..',
+            'title' => 'Oh...',
             'picture' => 'JimFace.gif',
         ],
         [
@@ -103,7 +103,7 @@ class GifFixtures extends Fixture
             'picture' => 'Kevin-Nods-and-Smiles.gif',
         ],
         [
-            'title' => 'Kevin Best Chili',
+            'title' => 'Kevin\'s Famous Chili',
             'picture' => 'KevinChili.gif',
         ],
         [
@@ -131,7 +131,7 @@ class GifFixtures extends Fixture
             'picture' => 'PrisonMike.gif'
         ],
         [
-            'title' => 'Prison Mike Story',
+            'title' => 'Prison Mike Dementors',
             'picture' => 'PrisonMikeDementors.gif'
         ],
         [
@@ -171,7 +171,7 @@ class GifFixtures extends Fixture
             'picture' => 'TobyNobodyCares.gif',
         ],
         [
-            'title' => 'Michael try to hide his feeling',
+            'title' => 'Michael hides his feeling',
             'picture' => 'WorstEnd.gif',
         ],
         [
@@ -187,7 +187,7 @@ class GifFixtures extends Fixture
             $gif = new Gif();
             $gif->setTitle($values['title']);
             $gif->setPicture($values['picture']);
-            $gif->setNbOfVotes(($faker->numberBetween(0, 5000)));
+            $gif->setNbOfVotes($faker->numberBetween(0, 5000));
             $manager->persist($gif);
             $this->addReference('gif_' . $key, $gif);
         }
