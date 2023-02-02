@@ -18,6 +18,8 @@ body {
     min-height: 100vh;
     display: grid;
     grid-template-rows: auto 1fr auto;
+    background: url("/assets/images/paperBackground.jpg");
+    background-size: cover;
 }
 
 .bodyContent {
@@ -183,7 +185,6 @@ body {
 
 
     .h2Home {
-        margin: 90px;
         font-size: 32px;
         font-style: italic;
     }

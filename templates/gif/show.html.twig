@@ -4,32 +4,38 @@
 {% endblock %}
 
 {% block body %}
-	<h1>Gif</h1>
+	<main class="m-3">
 
-	<table class="table">
-		<tbody>
-			<tr>
-				<th>Id</th>
-				<td>{{ gif.id }}</td>
-			</tr>
-			<tr>
-				<th>Title</th>
-				<td>{{ gif.title }}</td>
-			</tr>
-			<tr>
-				<th>Picture</th>
-				<td>{{ gif.picture }}</td>
-			</tr>
-			<tr>
-				<th>NbOfVotes</th>
-				<td>{{ gif.nbOfVotes }}</td>
-			</tr>
-		</tbody>
-	</table>
+		<h1>GIF</h1>
 
-	<a href="{{ path('app_gif_index') }}">back to list</a>
+		<table class="table">
+			<tbody>
+				<tr>
+					<th>Id</th>
+					<td>{{ gif.id }}</td>
+				</tr>
+				<tr>
+					<th>Title</th>
+					<td>{{ gif.title }}</td>
+				</tr>
+				<tr>
+					<th>Picture</th>
+					<td>{{ gif.picture }}</td>
+				</tr>
+				<tr>
+					<th>Votes</th>
+					<td>{{ gif.nbOfVotes }}</td>
+				</tr>
+			</tbody>
+		</table>
 
-	<a href="{{ path('app_gif_edit', {'id': gif.id}) }}">edit</a>
 
-	{{ include('gif/_delete_form.html.twig') }}
+		<a class="btn btn-secondary originalbtn" href="{{ path('app_gif_edit', {'id': gif.id}) }}">Edit</a>
+
+		{{ include('gif/_delete_form.html.twig') }}
+
+		<div class="mt-5">
+			<a href=" {{ path('app_gif_index') }} ">Back to list</a>
+		</div>
+	</main>
 {% endblock %}

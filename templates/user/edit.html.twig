@@ -4,11 +4,15 @@
 {% endblock %}
 
 {% block body %}
-	<h1>Edit User</h1>
+	<main class="m-3">
+		<h1>Edit User</h1>
 
-	{{ include('user/_form.html.twig', {'button_label': 'Update'}) }}
+		{{ include('user/_form.html.twig', {'button_label': 'Update'}) }}
 
-	<a href="{{ path('app_user_index') }}">back to list</a>
+		{{ include('user/_delete_form.html.twig') }}
 
-	{{ include('user/_delete_form.html.twig') }}
-{% endblock %}
+		<div class="mt-5">
+			<a href="{{ path('app_user_index') }}">Back to list</a>
+		</div>
+	</div>
+</main>{% endblock %}

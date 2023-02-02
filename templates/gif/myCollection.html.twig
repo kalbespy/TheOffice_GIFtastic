@@ -22,8 +22,8 @@
 								<span>
 									{{ gif.nbOfVotes }}</span>
 							</h4>
-							<a class="btn btn-danger randomBtn m-3 collectionBtn" href="{{ path('app_gif_remove', {'id': gif.id}) }}">Remove from your collection</a>
 							<a class="btn btn-primary randomBtn m-3 voteBtn" href="{{ path('app_gif_vote', {'id': gif.id}) }}">Add a vote</a>
+							<a class="btn btn-danger randomBtn m-3 collectionBtn" href="{{ path('app_gif_remove', {'id': gif.id}) }}">Remove</a>
 						</div>
 					</div>
 				{% else %}

@@ -37,15 +37,6 @@ class UserType extends AbstractType
                 'expanded' => false,
             ])
 
-            ->add('password', TextType::class, [
-                'attr' => [
-                    'placeholder' => 'Ex : password123+',
-                    'maxlength' => 255,
-                ],
-                'required' => true,
-                'label' => 'Password:',
-            ])
-
             ->add('pseudo', TextType::class, [
                 'attr' => [
                     'placeholder' => 'Ex : GifFan',

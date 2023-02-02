@@ -16,7 +16,7 @@ class GifFixtures extends Fixture
         ],
         [
             'title' => 'BANKRUPTCY !',
-            'picture' => 'Banckrupcy.gif',
+            'picture' => 'Banckruptcy.gif',
         ],
         [
             'title' => 'Bear, Beets, Battlestar Galactica',
