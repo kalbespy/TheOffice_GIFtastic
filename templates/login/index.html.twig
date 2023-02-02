@@ -21,12 +21,12 @@
 						<form class="m-5" action="{{ path('app_login') }}" method="post">
 							<div class="mb-4">
 								<label class="fw-bold d-block mb-2" for=" username">Email:</label>
-								<input class="inputLogin p-2" type="text" id="username" name="_username" value="{{ last_username }}">
+								<input class="inputLogin p-2 text-center" type="text" id="username" name="_username" value="{{ last_username }}">
 							</div>
 
 							<div class="mb-4">
 								<label class="fw-bold d-block mb-2" for="password">Password:</label>
-								<input class="inputLogin p-2" type="password" id="password" name="_password">
+								<input class="inputLogin p-2 text-center" type="password" id="password" name="_password">
 							</div>
 
 							<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">

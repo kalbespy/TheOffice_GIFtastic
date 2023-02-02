@@ -4,37 +4,46 @@
 {% endblock %}
 
 {% block body %}
-	{% for flash_error in app.flashes('verify_email_error') %}
-		<div class="alert alert-danger" role="alert">{{ flash_error }}</div>
-	{% endfor %}
+	<div class="text-center m-auto">
+		<h1 class="">
+			Coming soon</h1>
+	</div>
 
-	<h1>Register</h1>
+	<img class="m-auto mb-5" src="{{asset('build/images/ThatsWhatSheSaid.gif')}}" alt="">
 
-	<div class="d-flex row m-5 col-3">
-		<div class="d-flex m-3">
-			{{ form_start(registrationForm) }}
-			{{ form_row(registrationForm.email) }}
-		</div>
 
-		<div class="d-flex m-3">
-			{{ form_start(registrationForm) }}
-			{{ form_row(registrationForm.pseudo) }}
-		</div>
+	<div class="d-none">
+		{% for flash_error in app.flashes('verify_email_error') %}
+			<div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+		{% endfor %}
 
-		<div class="d-flex m-3">
-			{{ form_row(registrationForm.plainPassword, {
+		<h1>Register</h1>
+
+		<div class="d-flex row m-5 col-3">
+			<div class="d-flex m-3">
+				{{ form_start(registrationForm) }}
+				{{ form_row(registrationForm.email) }}
+			</div>
+
+			<div class="d-flex m-3">
+				{{ form_start(registrationForm) }}
+				{{ form_row(registrationForm.pseudo) }}
+			</div>
+
+			<div class="d-flex m-3">
+				{{ form_row(registrationForm.plainPassword, {
             label: 'Password'
         }) }}
-		</div>
+			</div>
 
-		<div class="d-flex m-3">
-			{{ form_row(registrationForm.agreeTerms) }}
-		</div>
+			<div class="d-flex m-3">
+				{{ form_row(registrationForm.agreeTerms) }}
+			</div>
 
-		<div class="d-flex m-3">
-			<button type="submit" class="btn">Register</button>
-			{{ form_end(registrationForm) }}
+			<div class="d-flex m-3">
+				<button type="submit" class="btn">Register</button>
+				{{ form_end(registrationForm) }}
+			</div>
 		</div>
-
 	</div>
 {% endblock %}
