@@ -1,3 +1,5 @@
+console.log('Hello, my name is Computron, may I help you ?')
+
 collectRandomBtns = document.getElementsByClassName('collectBtnRandom')
 
 for (let i = 0; i < collectRandomBtns.length; i++) {
@@ -7,7 +9,7 @@ for (let i = 0; i < collectRandomBtns.length; i++) {
 function addToCollection(e) {
     e.preventDefault();
 
-    console.log('Hello, my name is Computron, may I help you ?')
+    console.log('Calculating, calculating .... Collect !')
 
     const collectionLink = e.currentTarget;
     const link = collectionLink.href;
@@ -37,7 +39,7 @@ for (let i = 0; i < collectionBtns.length; i++) {
 function removeFromCollection(e) {
     e.preventDefault();
 
-    console.log('Hello, my name is Computron, may I help you ?')
+    console.log('Calculating, calculating .... Removed !')
 
     const collectionLink = e.currentTarget;
     const link = collectionLink.href;
@@ -63,12 +65,11 @@ for (let i = 0; i < voteBtns.length; i++) {
 function addVote(e) {
     e.preventDefault();
 
-    console.log('Hello, my name is Computron, may I help you ?')
+    console.log('Calculating, calculating .... Voted !')
 
     const voteLink = e.currentTarget;
     const link = voteLink.href;
     const voteCount = voteLink.previousElementSibling.previousElementSibling.firstElementChild
-    console.log(voteCount);
     let voteNb = parseInt(voteCount.innerText);
     voteNb++
 
